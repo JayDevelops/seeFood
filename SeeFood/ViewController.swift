@@ -75,7 +75,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                  fatalError("Model failed to process image")
             }
             
-            print(results)
+            //Gets the first strong result that the model is confident it is in
+            if let firstResult = results.first  {
+                
+                //If the first item is confident it is a hotdog then put the title to "Hotdog"
+                if firstResult.identifier.contains("hotdog")    {
+                    self.navigationItem.title = "Hotdog!"
+                }   else    {
+                    self.navigationItem.title = "Not Hotdog!"
+                }
+                
+            }
             
         }
         
